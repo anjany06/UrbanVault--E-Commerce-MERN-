@@ -9,11 +9,14 @@ import Cart from "./pages/Cart";
 import Contact from "./pages/Contect";
 import PlaceOrder from "./pages/PlaceOrder";
 import Orders from "./pages/Orders";
+import Navbar from "./components/Navbar";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <>
       <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/collection" element={<Collection />} />

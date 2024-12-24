@@ -721,3 +721,4 @@ export const products = [
     }
 
 ]
+export default assets;
