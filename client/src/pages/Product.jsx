@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { useState } from "react";
 import assets from "../assets/assets/frontend_assets/assets";
+import RelatedProducts from "../components/RelatedProducts";
 
 const Product = () => {
   //when we have to access something from url we use useParams which is
@@ -111,6 +112,10 @@ const Product = () => {
         </div>
       </div>
       {/* display related products */}
+      <RelatedProducts
+        category={productData.category}
+        subCategory={productData.subCategory}
+      />
     </div>
   ) : (
     <div className="opacity-0"></div>
