@@ -93,7 +93,24 @@ const Product = () => {
           </div>
         </div>
       </div>
-      
+      {/* description and review section */}
+      <div className="mt-20">
+        <div className="flex">
+          <b className="border px-5 py-2 text-sm">Description</b>
+          <p className="border px-5 py-2 text-sm">Review (122)</p>
+        </div>
+        <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
+          <p>
+            Shop from forever for a curated selection of quality products,
+            unbeatable deals, and a seamless online shopping experience!
+          </p>
+          <p>
+            Discover a seamless shopping experience with unbeatable deals on
+            quality products, tailored just for you!
+          </p>
+        </div>
+      </div>
+      {/* display related products */}
     </div>
   ) : (
     <div className="opacity-0"></div>
