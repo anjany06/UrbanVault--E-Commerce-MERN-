@@ -45,7 +45,6 @@ const ShopContextProvider = (props) => {
         } catch (error) {}
       }
     }
-    console.log(totalCount);
     return totalCount;
   };
 
