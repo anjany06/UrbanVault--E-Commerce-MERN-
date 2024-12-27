@@ -2,10 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "main": "server.js",
+  "type":"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "server.js",
-    "dev" : "nodemon server.js"
+    "server": "nodemon server.js"
+
   },
   "author": "anjany pandey",
   "license": "ISC",
@@ -20,6 +22,9 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "razorpay": "^2.9.5",
+    "stripe": "^17.5.0",
+    "validator": "^13.12.0"
   }
 }
