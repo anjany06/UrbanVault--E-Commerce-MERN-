@@ -7,9 +7,28 @@ const createToken = (id) =>{
   return jwt.sign({id}, process.env.JWT_SECRET)
 }
 //Route for user Login
-const loginUser = async(req, res)=>{
- 
+const loginUser  = async(req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await userModel.findOne({ email });
 
+    // Check if user exists
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+
+    // Compare password only if user exists
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (isMatch) {
+      const token = createToken(user._id);
+      return res.json({ success: true, token });
+    } else {
+      return res.json({ success: false, message: 'Invalid credentials' });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({ success: false, message: error.message });
+  }
 }
 
 //Route for user Registration
