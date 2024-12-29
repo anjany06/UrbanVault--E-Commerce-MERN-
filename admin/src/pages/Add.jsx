@@ -240,7 +240,7 @@ const Add = ({ token }) => {
               setSizes((prev) =>
                 prev.includes("XL")
                   ? prev.filter((item) => item !== "XL")
-                  : [...prev, "Xl"]
+                  : [...prev, "XL"]
               )
             }
           >
