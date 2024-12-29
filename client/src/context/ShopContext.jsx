@@ -9,7 +9,6 @@ export const ShopContext = createContext();
 const ShopContextProvider = (props) => {
   const currency = "$";
   const delivery_fee = 10;
-
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   // created to display search bar
@@ -19,6 +18,8 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
 
   const [products, setProducts] = useState([]);
+
+  const [token, setToken] = useState("");
 
   const navigate = useNavigate();
 
@@ -80,9 +81,7 @@ const ShopContextProvider = (props) => {
 
   const getProductsData = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:4000/api/product/list"
-      );
+      const response = await axios.get(backendUrl + "/api/product/list");
       if (response.data.success) {
         setProducts(response.data.products);
       } else {
@@ -112,6 +111,8 @@ const ShopContextProvider = (props) => {
     getCartAmount,
     navigate,
     backendUrl,
+    token,
+    setToken,
   };
 
   return (
