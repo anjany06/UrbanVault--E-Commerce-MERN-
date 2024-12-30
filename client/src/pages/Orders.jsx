@@ -35,7 +35,7 @@ const Orders = () => {
           <div className="md:w-1/2 flex justify-between">
             <div className="flex items-center gap-2">
               <p className="min-w-2 h-2 rounded-full bg-green-500"></p>
-              <p classNme="text-sm md:text-base">Ready to ship</p>
+              <p className="text-sm md:text-base">Ready to ship</p>
             </div>
             <button className="border px-4 py-2 text-sm font-medium rounded-sm">
               Track Order
