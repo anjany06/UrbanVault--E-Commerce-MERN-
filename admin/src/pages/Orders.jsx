@@ -34,6 +34,22 @@ const Orders = ({ token }) => {
     }
   };
 
+  const statusHandler = async (e, orderId) => {
+    try {
+      const response = await axios.post(
+        backendUrl + "/api/order/status",
+        { orderId, status: e.target.value },
+        { headers: { token } }
+      );
+
+      if (response.data.success) {
+        await fetchAllOrders();
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error(response.data.message);
+    }
+  };
   // we have to call this function whenever our page get loaded
   useEffect(() => {
     fetchAllOrders();
@@ -98,11 +114,15 @@ const Orders = ({ token }) => {
               {currency}
               {order.amount}
             </p>
-            <select className="p-2 font-semibold">
+            <select
+              onChange={(e) => statusHandler(e, order._id)}
+              value={order.status}
+              className="p-2 font-semibold"
+            >
               <option value="OrderPlaced">Order Placed</option>
               <option value="Packing">Packing</option>
               <option value="Shipped">Shipped</option>
-              <option value="Out for delivey">Out for Delievery</option>
+              <option value="Out for delivery">Out for Delievery</option>
               <option value="Delieverd">Delivered</option>
             </select>
           </div>
