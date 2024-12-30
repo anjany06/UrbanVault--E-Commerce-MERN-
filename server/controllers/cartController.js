@@ -2,6 +2,7 @@ import userModel from "../models/userModel"
 // add products to user cart
 const addToCart = async(req, res)=>{
   try {
+    // whenever we do the api call we have to provide itemId and size as userId is provided by auth.js
     const {userId, itemId, size} = req.body;
 
     const userData = await userModel.findById(userId)
@@ -25,7 +26,7 @@ const addToCart = async(req, res)=>{
     await userModel.findByIdAndUpdate(userId, {cartData})
 
     res.json({success:true, message:"Added to Cart"})
-    
+
   } catch (error) {
     console.log(error);
     res.json({success:false, message:error.message})
@@ -34,8 +35,22 @@ const addToCart = async(req, res)=>{
 }
 // update user cart
 const updateCart = async(req, res)=>{
+  try {
+    // whenever we do the api call we have to provide itemId,size and quantity as userId is provided by auth.js
+    const {userId, itemId, size, quantity} = req.body;
+    const userData = await userModel.findById(userId)
+    let cartData = await userData.cartData;
 
+    cartData[itemId][size] = quantity;
 
+    await userModel.findByIdAndUpdate(userId, {cartData})
+
+    res.json({success:true, message:"Cart Upadated"})
+    
+  } catch (error) {
+    console.log(error);
+    res.json({success:false, message:error.message})
+  }
 }
 // get user cart data
 const getUserCart = async(req, res)=>{
