@@ -78,9 +78,7 @@ const Orders = () => {
               <p className="text-sm md:text-base">{item.status}</p>
             </div>
             <button
-              onClick={() =>
-                toast.success("Will be sending in your registered email soon")
-              }
+              onClick={loadOrderData}
               className="border px-4 py-2 text-sm font-medium rounded-sm"
             >
               Track Order
