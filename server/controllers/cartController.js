@@ -1,4 +1,4 @@
-import userModel from "../models/userModel"
+import userModel from "../models/userModel.js"
 // add products to user cart
 const addToCart = async(req, res)=>{
   try {
@@ -8,18 +8,18 @@ const addToCart = async(req, res)=>{
     const userData = await userModel.findById(userId)
     let cartData = await userData.cartData;
     if(cartData[itemId]){
-      if(cardData[itemId][size]){
-        cardData[itemId][size] +=1
+      if(cartData[itemId][size]){
+        cartData[itemId][size] +=1
       }
       else{
-        cardData[itemId][size] = 1
+        cartData[itemId][size] = 1
       }
     }
     else{
       //creating obj for this item id in cardData
-      cardData[itemId] = {};
+      cartData[itemId] = {};
       //and add that item with size in this
-      cardData[itemId][size] = 1
+      cartData[itemId][size] = 1
     }
 
     //updates the new cardData in userModel in DB
