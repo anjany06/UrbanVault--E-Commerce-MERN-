@@ -24,35 +24,40 @@ const ShopContextProvider = (props) => {
   const navigate = useNavigate();
 
   const addToCart = async (itemId, size) => {
-    if (!size) {
-      toast.error("Select Product Size");
-      return;
-    }
-    // structuredClone method is used to copy a obj(cartitems)
-    let cartData = structuredClone(cartItems);
+    if (!token) {
+      toast.error("You are not logged in");
+      navigate("/login");
+    } else {
+      if (!size) {
+        toast.error("Select Product Size");
+        return;
+      }
+      // structuredClone method is used to copy a obj(cartitems)
+      let cartData = structuredClone(cartItems);
 
-    if (cartData[itemId]) {
-      if (cartData[itemId][size]) {
-        cartData[itemId][size] += 1;
+      if (cartData[itemId]) {
+        if (cartData[itemId][size]) {
+          cartData[itemId][size] += 1;
+        } else {
+          cartData[itemId][size] = 1;
+        }
       } else {
+        cartData[itemId] = {};
         cartData[itemId][size] = 1;
       }
-    } else {
-      cartData[itemId] = {};
-      cartData[itemId][size] = 1;
-    }
-    setCartItems(cartData);
+      setCartItems(cartData);
 
-    if (token) {
-      try {
-        await axios.post(
-          `${backendUrl}/api/cart/add`,
-          { itemId, size },
-          { headers: { token } }
-        );
-      } catch (error) {
-        console.error(error);
-        toast.error(error.message);
+      if (token) {
+        try {
+          await axios.post(
+            `${backendUrl}/api/cart/add`,
+            { itemId, size },
+            { headers: { token } }
+          );
+        } catch (error) {
+          console.error(error);
+          toast.error(error.message);
+        }
       }
     }
   };
