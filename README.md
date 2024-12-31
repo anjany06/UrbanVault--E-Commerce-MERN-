@@ -28,8 +28,6 @@ Product Management: Admins can add, edit, and delete products.
 
 Order Management: Admins can view and manage orders, including updating order status and tracking information.
 
-User Management: Admins can view and manage user information, including user profiles and order history.
-
 Payment Gateway Integration
 
 Stripe: The site integrates with Stripe payment gateway to enable secure and seamless payments.
