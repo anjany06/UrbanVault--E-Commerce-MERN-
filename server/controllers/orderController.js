@@ -1,13 +1,19 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
 import Stripe from "stripe";
+import razorpay from "razorpay";
+
 
 //Global variables
-const Currency = "usd"
+const currency = "usd"
 const deliveryCharge = 10
 
 //gateway initialize
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const razorpayInstance = new razorpay({
+  key_id : process.env.RAZORPAY_KEY_ID,
+  key_secret : process.env.RAZORPAY_KEY_SECRET
+})
 
 //placing order using COD method
 const placeOrder = async(req, res)=>{
@@ -58,7 +64,7 @@ const placeOrderStripe = async(req, res)=>{
   //Created the lineItems using that we can exexute the stripe payment
     const line_items = items.map((item)=>({
       price_data:{
-        currency: Currency,
+        currency: currency,
         product_data:{
           name:item.name
         },
@@ -68,7 +74,7 @@ const placeOrderStripe = async(req, res)=>{
     }))
     line_items.push({
       price_data:{
-        currency: Currency,
+        currency: currency,
         product_data:{
           name:"Delivery Charges"
         },
@@ -113,7 +119,39 @@ const verifyStripe = async(req, res) =>{
 }
 //placing order using razorpay method
 const placeOrderRazorpay = async(req, res)=>{
-  
+  try {
+    const {userId, items, amount, address} = req.body;
+
+    const orderData = {
+      userId,
+      items,
+      amount,
+      address,
+      paymentMethod:"Razorpay",
+      payment:false,
+      date:Date.now()
+    }
+    const newOrder = new orderModel(orderData);
+    await newOrder.save();
+
+    const options = {
+      amount : amount * 100,
+      currency: currency.toUpperCase(),
+      receipt: newOrder._id.toString(),
+  }
+  await razorpayInstance.orders.create(options,(error, order)=>{
+    if(error){
+      console.log(error);
+      return res.json({success:false, message:error})
+  }
+
+   res.json({success:true, order})
+});
+  } catch (error) {
+    console.log(error);
+    res.json({success:false, message:error.message})
+    
+  }
 }
 
 //All orders data for admin panel

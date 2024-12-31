@@ -88,6 +88,10 @@ const PlaceOrder = () => {
             toast.error(responseStripe.data.message);
           }
           break;
+
+        case "razorpay":
+          const responseRazorpay = await axios.post(backendUrl)
+          break;
         default:
           break;
       }
