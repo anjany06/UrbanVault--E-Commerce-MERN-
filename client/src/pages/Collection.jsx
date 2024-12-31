@@ -3,6 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import assets from "../assets/assets/frontend_assets/assets";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
+import Loading from "../components/Loading";
 
 const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
@@ -11,6 +12,8 @@ const Collection = () => {
   const [category, setCategory] = useState([]);
   const [subCategory, setsubCategory] = useState([]);
   const [sortType, setSortType] = useState("relavent");
+
+  const [loading, setLoading] = useState(true);
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -69,11 +72,21 @@ const Collection = () => {
   };
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory, showSearch, search,products]);
+  }, [category, subCategory, showSearch, search, products]);
 
   useEffect(() => {
     sortProduct();
   }, [sortType]);
+
+  useEffect(() => {
+    if (products.length > 0) {
+      setLoading(false);
+    }
+  }, [products]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       {/* Filter options */}

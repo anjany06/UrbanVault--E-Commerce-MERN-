@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import { useState } from "react";
+import Loading from "../components/Loading";
 import assets from "../assets/assets/frontend_assets/assets";
 import RelatedProducts from "../components/RelatedProducts";
 
@@ -13,6 +14,8 @@ const Product = () => {
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
+
+  const [loading, setLoading] = useState(true);
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -26,7 +29,12 @@ const Product = () => {
 
   useEffect(() => {
     fetchProductData();
+    setLoading(false);
   }, [productId, products]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return productData ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
