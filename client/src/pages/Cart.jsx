@@ -3,7 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
 import assets from "../assets/assets/frontend_assets/assets";
 import CartTotal from "../components/CartTotal";
-
+import { toast } from "react-toastify";
 const Cart = () => {
   const { products, currency, cartItems, updateQuantity, navigate } =
     useContext(ShopContext);
@@ -35,7 +35,10 @@ const Cart = () => {
       </div>
       {cartData.length === 0 ? (
         <div className="flex justify-center items-center h-64">
-          <p className="text-gray-500 text-lg">Your cart is empty</p>
+          <p className="text-gray-500 text-lg">
+            Your cart is empty <br />
+            (Shop now to Proceed Further )
+          </p>
         </div>
       ) : (
         <>
@@ -75,16 +78,21 @@ const Cart = () => {
                     className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
                     type="number"
                     min={1}
+                    max={20}
                     defaultValue={item.quantity}
-                    onChange={(e) =>
-                      e.target.value === "" || e.target.value === "0"
-                        ? null
-                        : updateQuantity(
-                            item._id,
-                            item.size,
-                            Number(e.target.value)
-                          )
-                    }
+                    onChange={(e) => {
+                      const value = Number(e.target.value);
+                      if (value > 20) {
+                        e.target.value = 20;
+                        toast.error(
+                          "You cannot add more than 20 items to the cart"
+                        );
+                      } else if (value === "" || value === 0) {
+                        null;
+                      } else {
+                        updateQuantity(item._id, item.size, value);
+                      }
+                    }}
                   />
                   <img
                     onClick={() => updateQuantity(item._id, item.size, 0)}

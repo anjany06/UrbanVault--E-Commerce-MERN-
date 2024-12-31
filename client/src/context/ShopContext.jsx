@@ -32,6 +32,20 @@ const ShopContextProvider = (props) => {
         toast.error("Select Product Size");
         return;
       }
+      // Calculate the total number of items in the cart
+      let totalCount = 0;
+      for (const items in cartItems) {
+        for (const item in cartItems[items]) {
+          totalCount += cartItems[items][item];
+        }
+      }
+
+      // Check if adding this item will exceed the limit
+      if (totalCount >= 20) {
+        toast.error("You cannot add more than 20 items to the cart");
+        return;
+      }
+
       // structuredClone method is used to copy a obj(cartitems)
       let cartData = structuredClone(cartItems);
 

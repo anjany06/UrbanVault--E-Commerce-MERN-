@@ -7,6 +7,19 @@ const addToCart = async(req, res)=>{
 
     const userData = await userModel.findById(userId)
     let cartData = await userData.cartData;
+
+    // Calculate the total number of items in the cart
+    let totalCount = 0;
+    for (const items in cartData) {
+      for (const item in cartData[items]) {
+        totalCount += cartData[items][item];
+      }
+    }
+
+    // Check if adding this item will exceed the limit
+    if (totalCount >= 20) {
+      return res.json({ success: false, message: "You cannot add more than 20 items to the cart" });
+    }
     if(cartData[itemId]){
       if(cartData[itemId][size]){
         cartData[itemId][size] +=1
