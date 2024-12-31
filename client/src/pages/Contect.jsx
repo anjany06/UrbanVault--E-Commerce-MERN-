@@ -21,7 +21,7 @@ const Content = () => {
             577 Williams Street <br /> Suite 247, LONDON, UK
           </p>
           <p className="text-gray-500">
-            Tel: (415) 555-0102 <br /> Email : anjany.pandey06@gmail.com
+            Mob: (+91) 9821169378  <br /> Email : anjany.pandey06@gmail.com
           </p>
           <p className="font-semibold text-xl text-gray-600">
             Careers at Forever
