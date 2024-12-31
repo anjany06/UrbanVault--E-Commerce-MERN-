@@ -154,6 +154,8 @@ const placeOrderRazorpay = async(req, res)=>{
   }
 }
 
+const verify
+
 //All orders data for admin panel
 const allOrders = async(req,res) =>{
 try {
