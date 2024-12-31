@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { backendUrl } from "../App";
+import { backendUrl } from "../App.jsx";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { currency } from "../App";
+import { currency } from "../App.jsx";
 
 const List = ({ token }) => {
   const [list, setList] = useState([]);
   const fetchList = async () => {
     try {
       const response = await axios.get(backendUrl + "/api/product/list", {});
-      console.log(response.data);
       if (response.data.success) {
         setList(response.data.products);
       } else {
