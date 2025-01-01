@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import { ToastContainer, toast } from "react-toastify";
 import Verify from "./pages/Verify";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
+      <Analytics />
     </>
   );
 }
