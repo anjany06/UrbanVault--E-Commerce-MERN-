@@ -72,6 +72,7 @@ const placeOrderStripe = async(req, res)=>{
       },
       quantity : item.quantity
     }))
+    // Adding Delivery charges
     line_items.push({
       price_data:{
         currency: currency,

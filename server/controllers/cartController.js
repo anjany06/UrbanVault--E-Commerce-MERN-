@@ -20,6 +20,7 @@ const addToCart = async(req, res)=>{
     if (totalCount >= 20) {
       return res.json({ success: false, message: "You cannot add more than 20 items to the cart" });
     }
+    // if the item is already exits in the cart
     if(cartData[itemId]){
       if(cartData[itemId][size]){
         cartData[itemId][size] +=1
@@ -27,7 +28,7 @@ const addToCart = async(req, res)=>{
       else{
         cartData[itemId][size] = 1
       }
-    }
+    }// and if the item is not exits in the cart
     else{
       //creating obj for this item id in cardData
       cartData[itemId] = {};
@@ -58,7 +59,7 @@ const updateCart = async(req, res)=>{
 
     await userModel.findByIdAndUpdate(userId, {cartData})
 
-    res.json({success:true, message:"Cart Upadated"})
+    res.json({success:true, message:"Cart Updated"})
     
   } catch (error) {
     console.log(error);
