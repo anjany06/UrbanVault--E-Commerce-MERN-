@@ -177,7 +177,7 @@ export const resetPassword = async (req, res) => {
     return res.json({
       success: true,
       message:
-        "password has been reset successfully (login again with new password)",
+        "Password has been reset successfully (login again with new password)",
     });
   } catch (error) {
     return res.status(400).json({ success: false, message: error.message });
