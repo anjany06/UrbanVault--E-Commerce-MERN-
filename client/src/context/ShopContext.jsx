@@ -20,6 +20,8 @@ const ShopContextProvider = (props) => {
   const [products, setProducts] = useState([]);
 
   const [token, setToken] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
 
@@ -159,6 +161,38 @@ const ShopContextProvider = (props) => {
       toast.error(error.message);
     }
   };
+  const getUserData = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Get token from localStorage
+      if (!token) {
+        toast.error("No token found. Please log in again.");
+        navigate("/login"); // Redirect to login if no token
+        return;
+      }
+
+      const response = await axios.get(backendUrl + "/api/user/data", {
+        headers: {
+          Authorization: `Bearer ${token}`, // Sending token in the Authorization header
+        },
+      });
+
+      if (response.data.success) {
+        setName(response.data.name);
+        setEmail(response.data.email);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      toast.error("Failed to fetch user data. Please log in again.");
+      navigate("/login"); // Redirect to login if unauthorized
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [token]);
+
   useEffect(() => {
     getProductsData();
   }, []);
@@ -187,6 +221,11 @@ const ShopContextProvider = (props) => {
     backendUrl,
     token,
     setToken,
+    getUserData,
+    name,
+    email,
+    setName,
+    setEmail,
   };
 
   return (

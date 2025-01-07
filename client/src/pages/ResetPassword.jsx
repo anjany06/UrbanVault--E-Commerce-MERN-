@@ -95,11 +95,11 @@ const ResetPassword = () => {
       toast.error("An error occurred while resetting password");
     }
   };
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate("/");
+  //   }
+  // }, [token]);
   return (
     <div>
       {/* enter email id */}

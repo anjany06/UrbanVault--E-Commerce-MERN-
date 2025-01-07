@@ -17,6 +17,7 @@ import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer, toast } from "react-toastify";
 import Verify from "./pages/Verify";
 import { Analytics } from "@vercel/analytics/react";
+import MyProfile from "./pages/MyProfile";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/place-order" element={<PlaceOrder />} />
           <Route path="/orders" element={<Orders />} />

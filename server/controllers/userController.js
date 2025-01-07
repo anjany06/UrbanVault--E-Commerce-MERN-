@@ -183,3 +183,145 @@ export const resetPassword = async (req, res) => {
     return res.status(400).json({ success: false, message: error.message });
   }
 };
+//send verfication otp to the user's email
+export const sendVerifyOtp = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const user = await userModel.findById(userId);
+    if (user.isAccountVerified) {
+      return res.json({
+        success: false,
+        message: "Account is already verified",
+      });
+    }
+    //creating a 6 six digit otp for verfication
+    const otp = String(Math.floor(100000 + Math.random() * 900000));
+    user.verifyOtp = otp;
+    //otp expires in one day
+    user.verifyOtpExpireAt = Date.now() + 24 * 60 * 60 * 1000;
+
+    await user.save();
+    //send otp to user's email
+    const mailOptions = {
+      from: process.env.SENDER_EMAIL,
+      to: user.email,
+      subject: "Account Verification OTP",
+      // text: `Your OTP is ${otp}. Verify your account using this OTP.`,
+      html: EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", otp).replace(
+        "{{email}}",
+        user.email
+      ),
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ success: true, message: "Verification OTP sent on Email" });
+  } catch (error) {
+    return res.status(400).json({ success: false, message: error.message });
+  }
+};
+//email verfication checker
+export const verifyEmail = async (req, res) => {
+  const { userId, otp } = req.body;
+
+  if (!userId || !otp) {
+    return res.json({ success: false, message: "Missing Details" });
+  }
+  try {
+    const user = await userModel.findById(userId);
+    if (!userId) {
+      return res.json({ success: false, message: "user not found" });
+    }
+
+    if (user.verifyOtp === "" || user.verifyOtp !== otp) {
+      return res.json({ success: false, message: "Invalid OTP" });
+    }
+
+    //checks whether the otp expires
+    if (user.verifyOtpExpireAt < Date.now()) {
+      return res.json({ success: false, message: "OTP has expired" });
+    }
+
+    //after the account verification
+    user.isAccountVerified = true;
+    user.verifyOtp = "";
+    user.verifyOtpExpireAt = 0;
+
+    await user.save();
+
+    return res.json({ success: true, message: "Email verified Successfully" });
+  } catch (error) {
+    return res.status(400).json({ success: false, message: error.message });
+  }
+};
+
+//to get the user  information
+export const getUserData = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decoded.id);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User  not found" });
+    }
+
+    res.json({
+      success: true,
+      name: user.name,
+      email: user.email,
+      isAccountVerified: user.isAccountVerified,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({ success: false, message: "Unauthorized" });
+  }
+};
+
+//update email
+export const emailUpdate = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decoded.id);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    user.email = req.body.email;
+    await user.save();
+
+    res.json({ success: true, message: "Email updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to update email" });
+  }
+};
+
+//update Name
+export const nameUpdate = async (req, res) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userModel.findById(decoded.id);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    user.name = req.body.name;
+    await user.save();
+
+    res.json({ success: true, message: "Name updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Failed to update name" });
+  }
+};
