@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -6,7 +6,7 @@ import axios from "axios";
 import { ShopContext } from "../context/ShopContext";
 
 const ResetPassword = () => {
-  const { backendUrl } = useContext(ShopContext);
+  const { backendUrl, token } = useContext(ShopContext);
 
   // to access cookies
   // axios.defaults.withCredentials = true;
@@ -95,6 +95,11 @@ const ResetPassword = () => {
       toast.error("An error occurred while resetting password");
     }
   };
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token]);
   return (
     <div>
       {/* enter email id */}
