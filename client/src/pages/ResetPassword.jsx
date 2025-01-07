@@ -106,7 +106,7 @@ const ResetPassword = () => {
       {!isEmailSent && (
         <form
           onSubmit={onSubmitEmail}
-          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-96 text-sm"
+          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-90 sm:w-96 text-sm"
         >
           <h1 className="text-3xl font-semibold text-center mb-4">
             Reset Password
@@ -136,7 +136,7 @@ const ResetPassword = () => {
       {!isOtpSubmited && isEmailSent && (
         <form
           onSubmit={onSubmitOtp}
-          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-96 text-sm"
+          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-90 sm:w-96 text-sm"
         >
           <h1 className="text-3xl font-semibold text-center mb-4">
             Reset Password OTP
@@ -153,7 +153,7 @@ const ResetPassword = () => {
                   maxLength="1"
                   key={index}
                   required
-                  className="w-12 h-12 bg-[#d1d5e8cc] text-wrap text-center text-gray-700 text-xl rounded-md"
+                  className="w-11 sm:w-12 h-12 bg-[#d1d5e8cc] text-wrap text-center text-gray-700 text-xl rounded-md"
                   ref={(e) => (inputRefs.current[index] = e)}
                   onInput={(e) => handleInput(e, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
@@ -171,7 +171,7 @@ const ResetPassword = () => {
       {isOtpSubmited && isEmailSent && (
         <form
           onSubmit={onSubmitNewPassword}
-          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-96 text-sm"
+          className="text-gray-800 p-8 m-auto mt-14 rounded-lg sm:border-2 sm:border-gray-600 w-90 sm:w-96 text-sm"
         >
           <h1 className="text-3xl font-semibold text-center mb-4">
             New Password
