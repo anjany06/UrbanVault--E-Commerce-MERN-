@@ -88,7 +88,7 @@ const Login = () => {
         required
       />
       <div className="w-full flex justify-between text-sm mt-[-8px]">
-        <p>Forgot your password?</p>
+        <p onClick={() => navigate("/reset-password")}>Forgot your password?</p>
         {currentState === "Login" ? (
           <p
             onClick={() => setCurrentState("Sign Up")}
