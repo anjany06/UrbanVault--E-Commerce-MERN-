@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { ShopContext } from "../context/ShopContext";
 
 const MyProfile = () => {
-  const { backendUrl, name, email, navigate, setName, setEmail } =
+  const { backendUrl, name, email, navigate, setName, setEmail, token } =
     useContext(ShopContext);
 
   const [isNameEdit, setIsNameEdit] = useState(false);
@@ -62,9 +62,11 @@ const MyProfile = () => {
     }
   };
 
-  // useEffect(() => {
-  //   getUserData();
-  // }, [backendUrl]);
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
 
   return (
     <div className="max-w-2xl mx-auto rounded-lg p-6">
@@ -81,6 +83,7 @@ const MyProfile = () => {
               onChange={(e) => setNewName(e.target.value)}
               placeholder="Enter new name"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              maxLength={15}
             />
             <div className="flex space-x-4">
               <button
@@ -124,6 +127,7 @@ const MyProfile = () => {
               onChange={(e) => setNewEmail(e.target.value)}
               placeholder="Enter new email"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              maxLength={30}
             />
             <div className="flex space-x-4">
               <button
@@ -141,8 +145,8 @@ const MyProfile = () => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-between">
-            <p className="text-lg">{email}</p>
+          <div className="email-container">
+            <p className="text-lg whitespace-wrap">{email}</p>
             <button
               onClick={() => {
                 setNewEmail(email);

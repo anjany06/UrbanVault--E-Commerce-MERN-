@@ -15,7 +15,7 @@ a.active hr {
   font-weight: 400;
   font-style: normal;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -23,5 +23,25 @@ a.active hr {
   a.active {
     background-color: black;
     color: white;
+  }
+}
+
+.email-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.email-container p {
+  word-break: break-all;
+}
+
+@media (max-width: 768px) {
+  .email-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .email-container button {
+    margin-top: 1rem;
   }
 }
