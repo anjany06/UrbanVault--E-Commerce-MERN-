@@ -29,6 +29,7 @@ const MyProfile = () => {
       if (response.data.success) {
         setEmail(newEmail); // Update email in state
         toast.success("Email updated successfully!");
+        setIsEmailEdit(false);
       } else {
         toast.error(response.data.message); // Show error message
       }
@@ -53,6 +54,7 @@ const MyProfile = () => {
       if (response.data.success) {
         setName(newName); // Update name in state
         toast.success("Name updated successfully!");
+        setIsNameEdit(false);
       } else {
         toast.error(response.data.message); // Show error message
       }
