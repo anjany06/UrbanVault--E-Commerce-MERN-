@@ -18,7 +18,7 @@ const About = () => {
         />
         <div className="flex flex-col justify-center gap-6 md:w-2/4 text-gray-600">
           <p>
-            Forever Where your shopping dreams come alive—explore a world of
+            Urbanvault Where your shopping dreams come alive—explore a world of
             unique treasures, personalized service, and lightning-fast delivery
             that redefines convenience
           </p>
@@ -29,7 +29,7 @@ const About = () => {
           </p>
           <b className="text-gray-800">Our Mission</b>
           <p>
-            At Forever, we empower customers to discover high-quality,
+            At UrbanVault, we empower customers to discover high-quality,
             sustainable products that enhance their lives, all while providing a
             seamless and trustworthy online shopping experience. Our commitment
             to exceptional service and ethical practices fosters lasting

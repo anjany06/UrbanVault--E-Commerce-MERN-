@@ -24,7 +24,7 @@ const Content = () => {
             Mob: (+91) 9821169378  <br /> Email : anjany.pandey06@gmail.com
           </p>
           <p className="font-semibold text-xl text-gray-600">
-            Careers at Forever
+            Careers at Urbanvault
           </p>
           <p className="text-gray-500">
             Learn more about our teams and job openings.

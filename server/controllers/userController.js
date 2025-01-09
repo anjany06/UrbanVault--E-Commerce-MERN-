@@ -75,7 +75,7 @@ const registerUser = async (req, res) => {
     const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: email,
-      subject: "Welcome to Forever-Ecommerce Website",
+      subject: "Welcome to UrbanVault-Ecommerce Website",
       text: `Hi ${name}, we're thrilled to have you here! Explore amazing features and make the most of your journey with us—your ultimate shopping destination! Your email id is ${email} 🚀`,
     };
     await transporter.sendMail(mailOptions);

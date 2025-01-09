@@ -6,7 +6,7 @@ const Footer = () => {
     <div>
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm">
         <div>
-          <img src={assets.logo} className="mb-5 w-32" alt="" />
+          <img src={assets.urban_logo} className="mb-5 w-48" alt="" />
           <p className="w-full md:2/3 text-gray-600">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit,
             perspiciatis labore. Necessitatibus quae, debitis atque aspernatur
@@ -34,7 +34,7 @@ const Footer = () => {
       <div>
         <hr />
         <p className="py-5 text-sm text-center">
-          Copyright 2024@ forever.com- All Right Reserved
+          Copyright 2024@ UrbanVault.com- All Right Reserved
         </p>
       </div>
     </div>
