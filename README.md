@@ -62,13 +62,6 @@ Installation and Setup
 
 To install and set up the site, follow these steps:
 
-Clone the repository using git clone https://github.com/your-username/forever-ecommerce-site.git
-Install the dependencies using npm install
-Set up the MongoDB database by creating a new database and adding the necessary collections
-Set up the Stripe and Razorpay payment gateways by creating accounts and obtaining API keys
-Start the server using npm start
-Open the site in a web browser using http://localhost:3000
-Contributing
 Contributions are welcome! If you'd like to contribute to the site, please fork the repository and submit a pull request with your changes.
 
 License
