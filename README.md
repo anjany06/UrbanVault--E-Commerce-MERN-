@@ -1,8 +1,8 @@
-Forever E-commerce Site
+UrbanVault E-commerce Site
 
 Overview
 
-Forever is a fully functional e-commerce site built using React, Node.js, and MongoDB. The site offers a wide range of features and functionalities to provide a seamless shopping experience for users.
+UrbanVault is a fully functional e-commerce site built using React, Node.js, and MongoDB. The site offers a wide range of features and functionalities to provide a seamless shopping experience for users.
 
 Features
 
