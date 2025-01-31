@@ -1,8 +1,8 @@
-Forever E-commerce Site
+UrbanVault E-commerce Site
 
 Overview
 
-Forever is a fully functional e-commerce site built using React, Node.js, and MongoDB. The site offers a wide range of features and functionalities to provide a seamless shopping experience for users.
+UrbanVault is a fully functional e-commerce site built using React, Node.js, and MongoDB. The site offers a wide range of features and functionalities to provide a seamless shopping experience for users.
 
 Features
 
@@ -62,13 +62,6 @@ Installation and Setup
 
 To install and set up the site, follow these steps:
 
-Clone the repository using git clone https://github.com/your-username/forever-ecommerce-site.git
-Install the dependencies using npm install
-Set up the MongoDB database by creating a new database and adding the necessary collections
-Set up the Stripe and Razorpay payment gateways by creating accounts and obtaining API keys
-Start the server using npm start
-Open the site in a web browser using http://localhost:3000
-Contributing
 Contributions are welcome! If you'd like to contribute to the site, please fork the repository and submit a pull request with your changes.
 
 License
