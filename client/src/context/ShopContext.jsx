@@ -164,11 +164,11 @@ const ShopContextProvider = (props) => {
   const getUserData = async () => {
     try {
       const token = localStorage.getItem("token"); // Get token from localStorage
-      if (!token) {
-        toast.error("No token found. Please log in again.");
-        navigate("/login"); // Redirect to login if no token
-        return;
-      }
+      // if (!token) {
+      //   toast.error("No token found. Please log in again.");
+      //   navigate("/login"); // Redirect to login if no token
+      //   return;
+      // }
 
       const response = await axios.get(backendUrl + "/api/user/data", {
         headers: {
