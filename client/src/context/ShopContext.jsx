@@ -165,7 +165,7 @@ const ShopContextProvider = (props) => {
     try {
       const token = localStorage.getItem("token"); // Get token from localStorage
       if (!token) {
-        toast.error("Your are not logged in");
+        // toast.error("Your are not logged in");
         // navigate("/login"); // Redirect to login if no token
         return;
       }
