@@ -72,6 +72,7 @@ import razorpay_logo from "./razorpay_logo.png";
 import stripe_logo from "./stripe_logo.png";
 import cross_icon from "./cross_icon.png";
 import urban_logo from "./urban_vault.png";
+import men_model from "./men-model2.jpg"
 
 export const assets = {
   hero_img,
@@ -92,6 +93,7 @@ export const assets = {
   stripe_logo,
   cross_icon,
   urban_logo,
+  men_model,
 };
 
 export const products = [
