@@ -1,75 +1,64 @@
-UrbanVault E-commerce Site
+# 🛍️ UrbanVault – E-commerce Website
 
-Overview
+![UrbanVault](frontend/src/assets/urbanvault-preview.png)
 
-UrbanVault is a fully functional e-commerce site built using React, Node.js, and MongoDB. The site offers a wide range of features and functionalities to provide a seamless shopping experience for users.
+## 🌟 Overview
 
-Features
+🚀 **UrbanVault** is a fully functional e-commerce platform built with **React**, **Node.js**, and **MongoDB**. It offers a seamless shopping experience with secure payments, modern UI, and powerful admin tools.
 
-User Features
+## 🌟 Features
 
-Registration and Login: Users can register and login to the site using their email and password.
+### 👤 User Features
 
-Product Browsing: Users can browse through various products, including clothing, accessories, and more.
+- ✅ **User Authentication** – Secure email/password login and registration  
+- ✅ **Product Browsing** – Browse clothing, accessories, and more  
+- ✅ **Filtering & Search** – Filter by category, price, size & use search bar  
+- ✅ **Product Details** – View detailed info with description, images & price  
+- ✅ **Cart Management** – Add/remove products and view cart  
+- ✅ **Secure Checkout** – Pay using **Stripe** or **Razorpay**  
+- ✅ **Order Tracking** – Track order status in real-time  
+- ✅ **Newsletter Subscription** – Stay updated on latest deals and launches  
 
-Product Filtering: Users can filter products by category, subcategory, price, and size.
+### 🛠️ Admin Features
 
-Product Details: Users can view detailed product information, including product description, price, and images.
+- ✅ **Product Management** – Add, update, and delete products  
+- ✅ **Order Management** – View orders and update tracking info  
 
-Add to Cart: Users can add products to their cart and view their cart contents.
+## 💳 Payment Gateway Integration
 
-Checkout: Users can checkout and make payments using various payment methods, including Stripe and Razorpay.
+- 🔐 **Stripe** – Secure international payment support  
+- 🔐 **Razorpay** – Indian payment system integration  
 
-Order Tracking: Users can track their orders.
+## 🛡️ Security Features
 
-Admin Features
+- 🔒 **Authentication & Authorization** – Role-based access control  
+- 🔒 **Data Encryption** – Secures user and payment data  
 
-Product Management: Admins can add, edit, and delete products.
+## 💻 Tech Stack
 
-Order Management: Admins can view and manage orders, including updating order status and tracking information.
+| Category           | Technologies                                                 |
+| ------------------ | ------------------------------------------------------------ |
+| **Frontend**       | React, React Router, Context API, Tailwind CSS, React Toastify |
+| **Backend**        | Node.js, Express.js                                          |
+| **Database**       | MongoDB                                                      |
+| **Authentication** | JWT (JSON Web Token)                                         |
+| **Payments**       | Stripe, Razorpay                                             |
+| **Deployment**     | Coming Soon                                                  |
 
-Payment Gateway Integration
+## 🔍 Additional Features
 
-Stripe: The site integrates with Stripe payment gateway to enable secure and seamless payments.
+- 🔎 **Search Bar** – Search by product name or description  
+- 📬 **Newsletter Signup** – Subscribe for updates and offers  
 
-Razorpay: The site also integrates with Razorpay payment gateway to provide an additional payment option.
+## 🔗 Live Demo
 
-Database Integration
+🚧 **Coming Soon**
 
-MongoDB: The site uses MongoDB as its database to store user information, product data, and order information.
+## 📥 Installation
 
-Security Features
+### 📦 Clone the repository
 
-Authentication and Authorization: The site uses authentication and authorization to ensure that only authorized users can access certain features and data.
+```bash
+git clone https://github.com/anjany06/urbanvault.git
+cd urbanvault
 
-Data Encryption: The site uses data encryption to protect sensitive user information and payment data.
-
-Other Features
-
-Search Bar: The site includes a search bar that allows users to search for products by name or description.
-
-Newsletter Subscription: The site allows users to subscribe to a newsletter to receive updates on new products, promotions, and sales.
-
-Technologies Used
-Frontend: React, React Router, Context API (state management) , Tailwind CSS, react toastify
-Backend: Node.js, Express.js, MongoDB
-
-Payment Gateway: Stripe, Razorpay
-Database: MongoDB
-
-Security: Authentication and Authorization, Data Encryption
-Installation and Setup
-
-To install and set up the site, follow these steps:
-
-Contributions are welcome! If you'd like to contribute to the site, please fork the repository and submit a pull request with your changes.
-
-License
-The site is licensed under the MIT License.
-
-Acknowledgments
-The site uses various open-source libraries and frameworks, including React, Node.js, and MongoDB. We acknowledge the contributions of the open-source community in making these technologies available.
-
-Contact
-
-If you have any questions or need further assistance, please contact us at anjany.pandey06@gmail.com.
