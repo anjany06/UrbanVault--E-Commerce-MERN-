@@ -70,7 +70,15 @@ const Product = () => {
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency}
-            {productData.price}
+            {productData.discount > 0
+              ? productData.price - productData.discount
+              : productData.price}
+            {productData.discount > 0 && (
+              <span className="text-sm text-red-500 ml-2">
+                -{currency}
+                {productData.discount}
+              </span>
+            )}
           </p>
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}

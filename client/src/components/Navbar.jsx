@@ -34,6 +34,13 @@ const Navbar = () => {
           <p>COLLECTION</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
         </NavLink>
+        <NavLink
+          to="/sale"
+          className="flex flex-col item-center gap-1 text-red-600"
+        >
+          <p>SALE</p>
+          <hr className="w-2/4 border-none h-[1.5px] bg-red-600 hidden" />
+        </NavLink>
         <NavLink to="/about" className="flex flex-col item-center gap-1">
           <p>ABOUT</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />

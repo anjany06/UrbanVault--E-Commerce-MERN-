@@ -16,6 +16,7 @@ import SearchBar from "./components/SearchBar";
 import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer, toast } from "react-toastify";
 import Verify from "./pages/Verify";
+import Sale from "./pages/Sale";
 import { Analytics } from "@vercel/analytics/react";
 import MyProfile from "./pages/MyProfile";
 
@@ -39,6 +40,7 @@ function App() {
           <Route path="/place-order" element={<PlaceOrder />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/verify" element={<Verify />} />
+          <Route path="/sale" element={<Sale />} />
         </Routes>
         <Footer />
       </div>
