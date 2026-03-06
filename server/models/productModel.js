@@ -10,13 +10,13 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price:{
-    type:Number,
-    required:true
+  price: {
+    type: Number,
+    required: true,
   },
-  image:{
-    type:Array,
-    required:true
+  image: {
+    type: Array,
+    required: true,
   },
   category: {
     type: String,
@@ -29,17 +29,21 @@ const productSchema = new mongoose.Schema({
   sizes: {
     type: Array,
     required: true,
-  }, 
+  },
   bestseller: {
     type: Boolean,
+  },
+  discount: {
+    type: Number,
+    default: 0, // new field, percentage or flat amount
   },
   date: {
     type: Number,
     required: true,
-  }
-
-})
+  },
+});
 // this will ensures ki ager model phle se hi bna h toh woh use ho jaye aur naya model na bne
-const productModel = mongoose.models.product || mongoose.model("product", productSchema);
+const productModel =
+  mongoose.models.product || mongoose.model("product", productSchema);
 
-export default productModel
+export default productModel;
